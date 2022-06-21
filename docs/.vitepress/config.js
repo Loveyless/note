@@ -6,6 +6,14 @@ export default {
   lang: 'zh-CN',
   lastUpdated: true, //最近更新时间
   themeConfig: {
+    //搜索 具体还没有配好
+    algolia: {
+      appKey: '',
+      indexName: '',
+      searchParameters: {
+        faeFilters: ['tags:vue,react']
+      }
+    },
     // siteTitle: 'My Custom Title',
     nav: [
       {
