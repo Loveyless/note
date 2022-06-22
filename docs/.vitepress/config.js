@@ -24,6 +24,10 @@ export default {
         text: '菜单2',
         link: '/demo2/',
         activeMatch: '/demo2/',
+      }, {
+        text: '团队',
+        link: '/auther/',
+        activeMatch: '/auther/',
       },
     ],
     sidebar: {

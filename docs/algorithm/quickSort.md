@@ -42,8 +42,8 @@ let quickSort = (arr) => {
     //找到数组item中间的下标
 　  let pivotIndex = Math.floor(arr.length / 2) ; //Math.floor 向下取整
 
-    //把中间下标的值截取出来 arr.splice为变异数组 会修改原数组
-　　let pivot = arr.splice(pivotIndex, 1)[0];
+    //把中间下标的值截取出来 arr.splice为变异数组 会修改原数组 取出来之前concat()浅拷贝一下
+　　let pivot = arr.concat().splice(pivotIndex, 1)[0];
 
 　　let left = [];
 
@@ -64,8 +64,8 @@ let quickSort = (arr) => {
     //找到数组item中间的下标
 　  let pivotIndex = Math.floor(arr.length / 2) ; //Math.floor 取近似值
 
-    //把中间下标的值截取出来作为'基准' arr.splice为变异数组 会修改原数组
-　　let pivot = arr.splice(pivotIndex, 1)[0];
+    //把中间下标的值截取出来作为'基准' arr.splice为变异数组 会修改原数组 取出来之前concat()浅拷贝一下
+　　let pivot = arr.concat().splice(pivotIndex, 1)[0];
 
 　　let left = [];
 
@@ -113,29 +113,23 @@ let quickSort = (arr) => {
     //找到数组item中间的下标
 　  let pivotIndex = Math.floor(arr.length / 2) ; //Math.floor 取近似值
 
-    //把中间下标的值截取出来作为'基准' arr.splice为变异数组 会修改原数组
-　　let pivot = arr.splice(pivotIndex, 1)[0];
+    //把中间下标的值截取出来作为'基准' arr.splice为变异数组 会修改原数组 取出来之前concat()浅拷贝一下
+　　let pivot = arr.concat().splice(pivotIndex, 1)[0];
 
 　　let left = [];
 
 　　let right = [];
 
     //然后，开始遍历数组，小于"基准"的元素放入左边的子集，大于基准的元素放入右边的子集。
-    for (let i = 0; i < arr.length; i++){
+    arr.forEach(item => {
+      
+      //每一项小于基准就取left
+      item < pivot && left.push(item);
 
-      if (arr[i] < pivot) {
+      //每一项大于基准就取right
+      item > pivot && right.push(item);
 
-            //每一项小于基准就取left
-  　　　　　　left.push(arr[i]);
-
-      } else {
-
-            //每一项大于基准就取right
-  　　　　　　right.push(arr[i]);
-
-      }
-
-    }
+    });
 
     return [...quickSort(left),pivot,...quickSort(right)]
     //或者 Array.concat() 合并两个或多个 不传则浅拷贝
@@ -162,7 +156,7 @@ arr.concat()
 
 
 ## more
-测试发现不光排序还**去重**了
+1. 测试发现不光排序还**去重**了
 为什么呢?
 ```js
 arr.forEach(item => {
@@ -179,3 +173,46 @@ arr.forEach(item => {
 这里对比item与基准值的时候并没有对**item等于基准**时的操作
 所以当数组里两个值相同 比对基准 会无任何操作
 只把基准返回 ``` return [...quickSort(left),pivot,...quickSort(right)] ``` 
+
+
+2. let pivot = arr.splice(pivotIndex, 1)[0]有两个作用
+
+    >1. 将“基准”从arr数组删除
+    >2. 将arr数组的“基准”赋值给pivot
+
+如果直接取，则后面还需要写一段将“基准”元素从arr数组删除的代码,这样一来代码反而更多。
+>**但是会改变传进来的参数数组 所以splice时要浅拷贝**
+```js
+let fun = (arr) => {
+  let d = arr.splice(0, 1)[0]; //这里改变了arr的值 也就改了a的值为[2,3]
+  d = arr.push(2);    //这里也改变了值 a为[2,3,2]
+  return d;
+};
+
+let a = [1, 2, 3];
+let b = fun(a);  //这里传入了a
+
+console.log(a); //所以a被改为[2,3,2]了
+console.log(b);
+```
+>我去，我好像发现了一个颠覆认知的事，以后类似操作还是浅/深拷贝一下吧
+
+## 未解
+1. 相比于```Array.prototype.stor()```快排没有**原地算法**
+```js
+    let quickSort = (arr) => {...};
+    let a = [12, 3, 3124, 14];
+    let b, c;
+
+    b = quickSort(a);
+    c = a.sort((a, b) => { return a - b });
+
+    console.log(a); //(4) [3, 12, 14, 3124]
+    console.log(b); //(4) [3, 12, 14, 3124]
+    console.log(c); //(4) [3, 12, 14, 3124]
+    console.log(b === a); //false
+    console.log(c === a); //true
+```
+```Array.prototype.stor()```使用了[原地算法](https://en.wikipedia.org/wiki/In-place_algorithm)所以还是相等的
+
+
