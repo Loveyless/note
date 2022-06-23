@@ -42,7 +42,8 @@ export default {
         {
           text: '基础算法',
           items: [
-            { text: '快速排序', link: '/algorithm/quickSort.md' },
+            { text: '插入排序', link: '/algorithm/1.insertSort.md' },
+            { text: '快速排序', link: '/algorithm/2.quickSort.md' },
           ]
         }
       ],
