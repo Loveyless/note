@@ -10,7 +10,7 @@ hero:
       text: Get Started
       link: /algorithm/
     - theme: alt
-      text: View on GitHub
+      text: Author GitHub
       link: https://github.com/Loveyless
 ---
 
