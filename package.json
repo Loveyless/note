@@ -8,7 +8,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:push_dist": "git subtree push --prefix docs/.vitepress/dist origin gh-pages"
+    "docs:publish": "git subtree push --prefix docs/.vitepress/dist origin gh-pages"
   },
   "keywords": [],
   "author": "",
