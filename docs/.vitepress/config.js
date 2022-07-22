@@ -14,7 +14,7 @@ export default {
         faeFilters: ['tags:vue,react']
       }
     },
-    // siteTitle: 'My Custom Title',
+    // 顶部菜单
     nav: [
       {
         text: '排序',
@@ -25,7 +25,7 @@ export default {
         link: '/vue/',
         activeMatch: '/vue/',
       }, {
-        text: '团队',
+        text: '作者',
         link: '/auther/',
         activeMatch: '/auther/',
       },
@@ -69,7 +69,7 @@ export default {
     ],
     editLink: { //在 GitHub 上编辑此页面
       text: '在 GitHub 上编辑此页面',
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path'
+      pattern: 'https://github.com/Loveyless/note/tree/gh-pages/:path'
     },
   }
 };

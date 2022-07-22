@@ -12,10 +12,12 @@ const members = [
   {
     avatar: 'https://www.github.com/loveyless.png',
     name: 'Loveyless',
-    title: 'Creator',
+    // title: 'Creator',
     links: [
       { icon: 'github', link: 'https://github.com/loveyless' },
       { icon: 'twitter', link: 'https://twitter.com/Lovey1ess' }
+      //没有icon的svg
+      // { icon: 'email', link: 'https://twitter.com/Lovey1ess' }
     ]
   },
 ]
@@ -24,10 +26,10 @@ const members = [
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>
-      团队是什么？
+      前端小萌新
     </template>
     <template #lead>
-      目前只有我一个人默默的记录自己学的算法
+      目前只会vue一点nodejs皮毛
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers
