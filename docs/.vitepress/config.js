@@ -41,6 +41,10 @@ export default {
       //常用函数
       "/hooks/": [
         {
+          text: "开始",
+          items: [{ text: "简介", link: "/hooks/" }],
+        },
+        {
           text: "常用函数",
           items: [{ text: "节流防抖", link: "/hooks/节流防抖.md" }],
         },
