@@ -29,7 +29,8 @@ const members = [
       前端小萌新
     </template>
     <template #lead>
-      目前只会vue一点nodejs皮毛
+      <!-- 目前只会vue一点nodejs皮毛 -->
+      学习go语言中……
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers
