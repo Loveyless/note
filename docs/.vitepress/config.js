@@ -22,7 +22,7 @@ export default {
         link: "/hooks/",
       },
       {
-        text: "排序",
+        text: "算法",
         activeMatch: "/algorithm/", //这个还没懂有下拉的怎么搞
         link: "/algorithm/",
       },
@@ -61,6 +61,7 @@ export default {
             { text: "冒泡排序", link: "/algorithm/1.bubble.md" },
             { text: "快速排序", link: "/algorithm/2.quick.md" },
             { text: "插入排序", link: "/algorithm/3.insert.md" },
+            { text: "两数之和", link: "/algorithm/4.两数之和.md" },
           ],
         },
       ],
