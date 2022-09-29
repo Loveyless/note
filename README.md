@@ -1,6 +1,8 @@
 ## 本人的一些学习笔记
 基于vitepress
 
+https://loveyless.github.io/note/
+
 ## 开发流程
 1. docs:build
 2. git push
