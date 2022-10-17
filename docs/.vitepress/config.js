@@ -27,6 +27,11 @@ export default {
         link: "/algorithm/",
       },
       {
+        text: "TypeScript",
+        activeMatch: "/typescript/", //这个还没懂有下拉的怎么搞
+        link: "/typescript/",
+      },
+      {
         text: "Vue设计与实现",
         link: "/vue/",
         activeMatch: "/vue/",
@@ -64,6 +69,17 @@ export default {
             { text: "两数之和", link: "/algorithm/4.两数之和.md" },
             { text: "无重复字符的最长子串", link: "/algorithm/6.无重复字符的最长子串.md" },
           ],
+        },
+      ],
+      //TypeScript
+      "/typescript/": [
+        {
+          text: "开始",
+          items: [{ text: "简介", link: "/typescript/" }],
+        },
+        {
+          text: "type-challenges",
+          items: [{ text: "简单&中等 题目", link: "/typescript/type-challenges1.md" }],
         },
       ],
       //Vue设计与实现

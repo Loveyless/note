@@ -1,6 +1,7 @@
 ---
 layout: page
 ---
+
 <script setup>
 import {
   VPTeamPage,
@@ -26,7 +27,7 @@ const members = [
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>
-      前端小萌新
+      一名小前端
     </template>
     <template #lead>
       <!-- 目前只会vue一点nodejs皮毛 -->
