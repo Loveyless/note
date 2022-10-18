@@ -89,8 +89,8 @@ export default {
           items: [{ text: "简介", link: "/vue/" }],
         },
         {
-          text: "1.权衡的艺术",
-          items: [{ text: "1.4运行时和编译时", link: "/vue/1.4运行时和编译时.md" }],
+          text: "框架设计概览",
+          items: [{ text: "权衡的艺术", link: "/vue/1权衡的艺术.md" }],
         },
       ],
     },
