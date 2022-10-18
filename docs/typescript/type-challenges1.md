@@ -96,5 +96,134 @@ type result = TupleToObject<typeof tuple>; // expected { tesla: 'tesla', 'model 
 **我的答案**
 
 ```typescript
-
+type KeyPropetry = string | number | symbol;
+type TupleToObject<T extends readonly KeyPropetry[]> = {
+  [K in T[number]]: K;
+};
 ```
+
+**题解**
+
+1. T[number]取出的每一项 key
+2. 值也是 K 键值相同
+
+**学到了什么？**
+
+1. as const 断言将宽泛的数据类型限定为具体的数值类型。
+
+```typescript
+const arrList1 = [1, "dada", true];
+// const arrList1: (string | number | boolean)[]
+
+const arrList2 = [1, "dada", true] as const;
+// const arrList: readonly [1, "dada", true]
+// 通过as const限定后，数组类型变为readonly [number, string]
+// 准确来说，数组被限定成了一个元组，第一个数据的类型number，第二个是string，第三个是boolean
+// as const实现了从(string | number | boolean)[]到readonly [1, "dada", true]转化。
+```
+
+as const 的其他应用场景
+
+```typescript
+function asConst() {
+  let a: string = "abc";
+  let b = (firstname: string, lastname: string): string => firstname + lastname;
+  // return [a, b] as const;
+  return [a, b];
+}
+
+let [pp, qq] = asConst();
+console.log(qq("Green", "Tom"));
+
+// 上述代码会直接编译失败，原因是系统认为变量qq的类型是string | ((firstname: string, lastname: string) => string) 编译器并不能认定q是一个函数。
+
+// 可以使用as const 将函数asConst的返回值由宽泛的string | ((firstname: string, lastname: string) => any)转化成具体的readonly[string，(firstname: string, lastname: string) => string]，从而显示的表明q是函数类型的变量
+```
+
+**疑问(已解决**
+
+```typescript
+type KeyPropetry = string | number | symbol;
+
+// 这个转出来就是对象
+type TupleToObject1<T extends readonly KeyPropetry[]> = {
+  [K in T[number]]: K;
+};
+
+// 这个转出来是数组??
+// 因为keyof拿到的是数组index!!!!
+// [K in keyof T]: K;  这样的话 类型就是 ["0","1"] 因为对象的key是字符串
+type TupleToObject2<T extends readonly KeyPropetry[]> = {
+  //“readonly ["tesla", "model 3"]”
+  [K in keyof T]: T[K];
+};
+
+const tup = ["tesla", "model 3"] as const;
+const result123: TupleToObject1<typeof tup> = {
+  tesla: "tesla",
+  "model 3": "model 3",
+};
+const result124: TupleToObject2<typeof tup> = ["tesla", "model 3"]; //为什么这个类型是数组而不是对象
+
+// TupleToObject2的另一种写法
+type ElementOf1<T extends readonly any[]> = T[number]; //“readonly ["tesla", "model 3"]”
+const result125: ElementOf<typeof tup> = ["tesla", "model 3"];
+
+// 这里就是一个转可选的例子 但是为什么上面的TupleToObject2出来的类型是数组而不是对象?
+// 因为keyof拿到的是数组index!!!!
+type SelecTable<T> = {
+  [K in keyof T]?: T[K];
+};
+const table1: SelecTable<{ name: string; age: number }> = {
+  name: "邱淑贞",
+};
+const table2: SelecTable<["nih", 313, true]> = ["nih"];
+```
+
+## 14 第一个元素
+
+> 实现一个通用`First<T>`，它接受一个数组`T`并返回它的第一个元素的类型。
+
+**例如：**
+
+```ts
+type arr1 = ["a", "b", "c"];
+type arr2 = [3, 2, 1];
+
+type head1 = First<arr1>; // expected to be 'a'
+type head2 = First<arr2>; // expected to be 3
+```
+
+**我的答案**
+
+```typescript
+/** infer 表示 extends 中待推断的类型 */
+type First<T extends any[]> = T extends [infer K,...infer P] ? K : never
+```
+
+**学到了什么？**
+
+1. 在extends语句中，支持infer关键字，可以推断一个类型变量，高效的对类型进行模式匹配。
+
+```typescript
+type First<T extends any[]> = T extends [...infer K] ? K : never
+let a3123: First<[1, 2, 3]> = [1, 2, 3]
+
+type First2<T extends any[]> = T extends [infer K] ? K : never
+let a3131: First2<[1]> = 1  //这个数组只要多一项 类型就会是never 所以下方使用...接住了后面的项
+
+type First3<T extends any[]> = T extends [infer K, ...infer P] ? P : never
+let a3535: First3<[1, 3, 4, 5]> = [3, 4, 5]
+
+type First4<T extends any[]> = T extends [infer K, ...infer P] ? K : never
+let a3775: First4<[1, 3, 4, 5]> = 1
+```
+
+**疑问**
+
+```typescript
+type First<T extends any[]> = T extends [infer K, ...infer P] ? K : never
+let a3775: First4<[1, 3, 4, 5]> = 1 
+//上方a3775只能等于1 如果我想它取到的是第一个元素的类型 也就是number 应该怎么写呢？
+```
+
