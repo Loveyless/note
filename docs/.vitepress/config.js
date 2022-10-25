@@ -22,7 +22,7 @@ export default {
         link: "/hooks/",
       },
       {
-        text: "算法",
+        text: "数据结构算法",
         activeMatch: "/algorithm/", //这个还没懂有下拉的怎么搞
         link: "/algorithm/",
       },
@@ -59,6 +59,13 @@ export default {
         {
           text: "开始",
           items: [{ text: "简介", link: "/algorithm/" }],
+        },
+        {
+          text: "数据结构",
+          items: [
+            { text: "栈队列链表", link: "/algorithm/数据结构/1.栈队列链表.md" },
+            { text: "二叉树", link: "/algorithm/数据结构/2.二叉树.md" },
+          ],
         },
         {
           text: "排序算法",
