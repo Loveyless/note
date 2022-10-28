@@ -74,6 +74,7 @@ export default {
             { text: "快速排序", link: "/algorithm/2.quick.md" },
             { text: "插入排序", link: "/algorithm/3.insert.md" },
             { text: "两数之和", link: "/algorithm/4.两数之和.md" },
+            { text: "两数相加", link: "/algorithm/5.两数相加.md" },
             { text: "无重复字符的最长子串", link: "/algorithm/6.无重复字符的最长子串.md" },
           ],
         },
