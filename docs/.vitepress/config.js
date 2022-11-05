@@ -17,12 +17,7 @@ export default {
     // 顶部菜单
     nav: [
       {
-        text: "常用函数",
-        activeMatch: "/hooks/", //这个还没懂有下拉的怎么搞
-        link: "/hooks/",
-      },
-      {
-        text: "数据结构算法",
+        text: "数据结构与算法",
         activeMatch: "/algorithm/", //这个还没懂有下拉的怎么搞
         link: "/algorithm/",
       },
@@ -37,23 +32,17 @@ export default {
         activeMatch: "/vue/",
       },
       {
+        text: "常用函数",
+        activeMatch: "/hooks/", //这个还没懂有下拉的怎么搞
+        link: "/hooks/",
+      },
+      {
         text: "作者",
         link: "/auther/",
         activeMatch: "/auther/",
       },
     ],
     sidebar: {
-      //常用函数
-      "/hooks/": [
-        {
-          text: "开始",
-          items: [{ text: "简介", link: "/hooks/" }],
-        },
-        {
-          text: "常用函数",
-          items: [{ text: "节流防抖", link: "/hooks/节流防抖.md" }],
-        },
-      ],
       //算法
       "/algorithm/": [
         {
@@ -63,21 +52,33 @@ export default {
         {
           text: "数据结构",
           items: [
-            { text: "栈队列链表", link: "/algorithm/数据结构/1.栈队列链表.md" },
-            { text: "二叉树", link: "/algorithm/数据结构/2.二叉树.md" },
+            { text: "栈队列", link: "/algorithm/数据结构/1.栈队列.md" },
+            { text: "数组链表", link: "/algorithm/数据结构/2.数组链表.md" },
+            { text: "二叉树", link: "/algorithm/数据结构/3.二叉树.md" },
           ],
         },
         {
-          text: "排序算法",
+          text: "排序",
           items: [
-            { text: "冒泡排序", link: "/algorithm/1.bubble.md" },
-            { text: "快速排序", link: "/algorithm/2.quick.md" },
-            { text: "插入排序", link: "/algorithm/3.insert.md" },
-            { text: "两数之和", link: "/algorithm/4.两数之和.md" },
-            { text: "两数相加", link: "/algorithm/5.两数相加.md" },
-            { text: "无重复字符的最长子串", link: "/algorithm/6.无重复字符的最长子串.md" },
+            { text: "冒泡排序", link: "/algorithm/排序/1.bubble.md" },
+            { text: "快速排序", link: "/algorithm/排序/2.quick.md" },
+            { text: "插入排序", link: "/algorithm/排序/3.insert.md" },
           ],
         },
+        {
+          text: "链表",
+          items: [
+            { text: "206.反转链表", link: "/algorithm/链表/206.反转链表.md" },
+          ]
+        },
+        {
+          text: "未分类",
+          items: [
+            { text: "1.两数之和", link: "/algorithm/1.两数之和.md" },
+            { text: "2.两数相加", link: "/algorithm/2.两数相加.md" },
+            { text: "3.无重复字符的最长子串", link: "/algorithm/3.无重复字符的最长子串.md" },
+          ]
+        }
       ],
       //TypeScript
       "/typescript/": [
@@ -99,6 +100,17 @@ export default {
         {
           text: "框架设计概览",
           items: [{ text: "权衡的艺术", link: "/vue/1权衡的艺术.md" }],
+        },
+      ],
+      //常用函数
+      "/hooks/": [
+        {
+          text: "开始",
+          items: [{ text: "简介", link: "/hooks/" }],
+        },
+        {
+          text: "常用函数",
+          items: [{ text: "节流防抖", link: "/hooks/节流防抖.md" }],
         },
       ],
     },
