@@ -9,17 +9,30 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+
+      # 未知
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      # 安装 node
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+          cache: pnpm
 
+      # 安装依赖项
+      - name: Install
+        run: pnpm i
+
+      # 打包文档
       - name: Build
-        run: yarn docs:build
+        run: pnpm docs:build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
