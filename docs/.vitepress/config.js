@@ -69,6 +69,7 @@ export default {
           text: "链表",
           items: [
             { text: "206.反转链表", link: "/algorithm/链表/206.反转链表.md" },
+            { text: "141.环形链表", link: "/algorithm/链表/141.环形链表.md" },
           ]
         },
         {
