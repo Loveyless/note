@@ -70,6 +70,7 @@ export default {
           items: [
             { text: "206.反转链表", link: "/algorithm/链表/206.反转链表.md" },
             { text: "141.环形链表", link: "/algorithm/链表/141.环形链表.md" },
+            { text: "21.合并两个有序链表", link: "/algorithm/链表/21.合并两个有序链表.md" },
           ]
         },
         {
