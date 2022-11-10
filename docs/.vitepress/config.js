@@ -72,6 +72,7 @@ export default {
             { text: "141.环形链表", link: "/algorithm/链表/141.环形链表.md" },
             { text: "21.合并两个有序链表", link: "/algorithm/链表/21.合并两个有序链表.md" },
             { text: "19.删除链表的倒数第N个结点", link: "/algorithm/链表/19.删除链表的倒数第N个结点.md" },
+            { text: "876.链表的中间结点", link: "/algorithm/链表/876.链表的中间结点.md" },
           ]
         },
         {
