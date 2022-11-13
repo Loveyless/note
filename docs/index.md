@@ -13,13 +13,13 @@ hero:
       text: Author GitHub
       link: https://github.com/Loveyless
 features:
-  - icon:
-    title: 文中图片等资源使用了Github图床 开启科学上网体验更佳
-    # details:
-  # - icon: 🖖
-  #   title: Power of Vue meets Markdown
-  #   details: Lorem ipsum...
-  # - icon: 🛠️
-  #   title: Simple and minimal, always
-  #   details: Lorem ipsum...
+  - icon: 😎
+    title: 文中图片等资源使用了Github图床
+    details: 开启科学上网体验更佳
+  - icon: 🖖
+    title: Power of Vue meets Markdown
+    details: Lorem ipsum...
+  - icon: 🛠️
+    title: Simple and minimal, always
+    details: Lorem ipsum...
 ---

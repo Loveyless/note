@@ -6,6 +6,7 @@ export default {
   lang: "zh-CN",
   lastUpdated: true, //最近更新时间
   themeConfig: {
+    logo: '/notebook.svg',
     //搜索 具体还没有配好
     algolia: {
       appKey: "",
@@ -73,6 +74,13 @@ export default {
             { text: "21.合并两个有序链表", link: "/algorithm/链表/21.合并两个有序链表.md" },
             { text: "19.删除链表的倒数第N个结点", link: "/algorithm/链表/19.删除链表的倒数第N个结点.md" },
             { text: "876.链表的中间结点", link: "/algorithm/链表/876.链表的中间结点.md" },
+          ]
+        },
+        {
+          text: "栈",
+          items: [
+            { text: "20.有效的括号", link: "/algorithm/栈/20.有效的括号.md" },
+            { text: "232.用栈实现队列", link: "/algorithm/栈/232.用栈实现队列.md" },
           ]
         },
         {
