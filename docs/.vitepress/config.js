@@ -81,6 +81,7 @@ export default {
           items: [
             { text: "20.有效的括号", link: "/algorithm/栈/20.有效的括号.md" },
             { text: "232.用栈实现队列", link: "/algorithm/栈/232.用栈实现队列.md" },
+            { text: "844.比较含退格的字符串", link: "/algorithm/栈/844.比较含退格的字符串.md" },
           ]
         },
         {
