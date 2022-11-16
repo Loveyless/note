@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Loveyless
   text: 学习笔记
-  tagline: 2023年毕业的双非计算机专业小萌新
+  tagline:
   actions:
     - theme: brand
       text: Get Started
