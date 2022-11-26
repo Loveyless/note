@@ -61,6 +61,7 @@ export default {
         {
           text: "排序",
           items: [
+            { text: "综合分析", link: "/algorithm/排序/0.index.md" },
             { text: "冒泡排序", link: "/algorithm/排序/1.bubble.md" },
             { text: "快速排序", link: "/algorithm/排序/2.quick.md" },
             { text: "插入排序", link: "/algorithm/排序/3.insert.md" },
