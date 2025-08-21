@@ -2,7 +2,7 @@
 
 基于 vitepress
 
-https://loveyless.github.io/
+https://loveyless.github.io/note/
 
 ## 开发流程
 
