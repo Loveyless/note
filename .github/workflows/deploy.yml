@@ -25,7 +25,7 @@ jobs:
         uses: pnpm/action-setup@v2
         # with: 为这个 Action 提供参数
         with:
-          version: 6 # 指定安装 pnpm 的版本为 6
+          version: 10 # 指定安装 pnpm 的版本为 6
 
       # 步骤 2: 拉取仓库代码
       # 这个步骤的作用是将你的代码下载到虚拟机中，以便后续步骤可以访问
