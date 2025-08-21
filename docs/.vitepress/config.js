@@ -1,6 +1,6 @@
 export default {
   // 将在其中部署计划站点https://foo.github.io/bar/的URL '/bar/' 斜线结尾
-  base: "/note/",
+  base: "/",
   title: "Loveyless的学习笔记", //站点标题
   description: "Loveyless的笔记网站", // 网站的描述。这将呈现为<meta>页面 HTML 中的标签。
   lang: "zh-CN",

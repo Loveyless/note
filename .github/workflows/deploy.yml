@@ -1,42 +1,69 @@
+# 工作流的名称，会显示在 GitHub Actions 的界面上
 name: Deploy
 
+# on: 指定触发这个工作流的事件
 on:
+  # push: 当有代码推送到仓库时触发
   push:
+    # branches: 只有推送到指定分支时才触发
     branches:
-      - master
+      - master # 这里指定的是 master 分支
 
+# jobs: 工作流中包含一个或多个任务（job）
 jobs:
+  # deploy: 这是任务的唯一标识符，可以自定义
   deploy:
-    runs-on: ubuntu-latest
-    steps:
-      # 安装 pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6
+    # runs-on: 指定运行此任务的虚拟机环境
+    runs-on: ubuntu-latest # 使用最新的 Ubuntu 系统
 
-      # 未知
-      - uses: actions/checkout@v3
+    # steps: 任务由一系列步骤（step）组成，会按顺序执行
+    steps:
+      # 步骤 1: 安装 pnpm 包管理器
+      # name: 步骤的名称，方便在日志中识别
+      - name: Setup pnpm
+        # uses: 使用一个第三方的 Action 来执行特定操作
+        uses: pnpm/action-setup@v2
+        # with: 为这个 Action 提供参数
         with:
+          version: 6 # 指定安装 pnpm 的版本为 6
+
+      # 步骤 2: 拉取仓库代码
+      # 这个步骤的作用是将你的代码下载到虚拟机中，以便后续步骤可以访问
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          # fetch-depth: 0 表示拉取所有的 git 历史记录。
+          # 某些部署工具（比如这个 gh-pages action）可能需要完整的历史记录来正确操作。
           fetch-depth: 0
 
-      # 安装 node
-      - uses: actions/setup-node@v3
+      # 步骤 3: 安装 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20 # 指定 Node.js 的版本为 20
+          # cache: 'pnpm' 会缓存 pnpm 的依赖项，
+          # 这样下次运行时如果依赖没有变化，就可以直接使用缓存，加快安装速度
           cache: pnpm
 
-      # 安装依赖项
-      - name: Install
-        run: pnpm i
+      # 步骤 4: 安装项目依赖
+      - name: Install dependencies
+        # run: 在虚拟机中执行命令行指令
+        run: pnpm i # 'pnpm i' 是 'pnpm install' 的缩写
 
-      # 打包文档
-      - name: Build
+      # 步骤 5: 构建文档网站
+      - name: Build documentation
+        # 运行在 package.json 中定义的 'docs:build' 脚本
+        # 这个脚本通常会调用 VitePress 或其他静态网站生成器来打包生成静态 HTML/CSS/JS 文件
         run: pnpm docs:build
 
-      - name: Deploy
+      # 步骤 6: 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        # 使用 peaceiris/actions-gh-pages 这个 Action 来简化部署流程
         uses: peaceiris/actions-gh-pages@v3
         with:
+          # github_token: 一个自动生成的、有权限推送到本仓库的令牌
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # publish_dir: 指定要部署的文件夹，也就是上一步构建生成的文件夹
           publish_dir: docs/.vitepress/dist
-          # cname: example.com # if wanna deploy to custom domain
+          # cname: 如果你想部署到自定义域名，可以取消这一行的注释并填上你的域名
+          # cname: example.com
